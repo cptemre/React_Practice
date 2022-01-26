@@ -1,0 +1,126 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: rgb(96, 95, 160);
+  overflow-x: hidden;
+}
+
+body,
+#mainContainer,
+#headerDiv,
+#lastContainer,
+.reviewContainer,
+.arrows {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+#mainContainer {
+  max-width: 80vw;
+  grid-template-rows: 0.5fr 2fr;
+}
+
+#headerDiv {
+  grid-template-rows: 1fr;
+  grid-template-columns: 0.1fr 0.9fr;
+  gap: 0.5rem;
+}
+
+#slash {
+  font-size: 2rem;
+  font-weight: bolder;
+  color: rgb(223, 221, 219);
+  width: 100%;
+  text-align: end;
+}
+
+#lastContainer {
+  grid-template-columns: 0.1fr 4fr 0.1fr;
+  align-items: flex-start;
+  min-height: 20rem;
+  margin-top: 1rem;
+  overflow-x: hidden;
+}
+
+.reviewContainer {
+  row-gap: 1.5rem;
+  position: relative;
+}
+
+@keyframes slideLeft {
+  0% {
+    right: 0;
+  }
+  5% {
+    right: 200%;
+  }
+  100% {
+    right: 200%;
+  }
+}
+
+@keyframes slideLeft2 {
+  0% {
+    right: -100%;
+  }
+  5% {
+    right: 0;
+  }
+  100% {
+    right: 0;
+  }
+}
+
+#name {
+  color: rgb(207, 235, 156);
+}
+
+#name,
+#job {
+  letter-spacing: 0.1rem;
+}
+
+#review {
+  color: rgb(26, 28, 46);
+}
+
+#sign {
+  font-size: 8rem;
+  color: rgb(196, 143, 74);
+}
+
+.arrows {
+  justify-items: center;
+  height: 100%;
+}
+
+.arrowSpan {
+  cursor: pointer;
+  color: whitesmoke;
+  background-color: rgb(12, 27, 95);
+  border: 2px solid whitesmoke;
+  border-radius: 0.5rem;
+  margin-bottom: 8rem;
+  font-size: 1.2rem;
+  transition: all 1s;
+}
+
+.arrowSpan:hover {
+  background-color: rgb(29, 165, 165);
+  color: black;
+}
+
+img {
+  width: 8rem;
+  height: 8rem;
+  object-fit: cover;
+  border: 2px solid orange;
+  border-radius: 6rem;
+}

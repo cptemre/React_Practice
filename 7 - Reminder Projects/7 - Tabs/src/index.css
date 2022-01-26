@@ -1,0 +1,164 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+#root,
+#mainContainer,
+#headerDiv,
+#secondContainer,
+#articleContainer {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+.undefined,
+#jobContainer,
+#list {
+  display: grid;
+  align-items: flex-start;
+  justify-items: flex-start;
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: coral;
+}
+
+#root {
+  width: 90vw;
+  min-height: 80vh;
+}
+
+#mainContainer {
+  grid-template-rows: 10vh 60vh 10vh;
+}
+
+#headerDiv {
+  gap: 0.5rem;
+}
+
+#underline {
+  width: 80%;
+  height: 2px;
+  background-color: blue;
+}
+
+#secondContainer {
+  grid-template-columns: 25vw 65vw;
+}
+
+#namesContainer {
+  height: 100%;
+  width: 100%;
+}
+
+.undefined {
+  padding-left: 1rem;
+  grid-template-columns: 0.1fr 0.9fr;
+  grid-template-rows: 1fr;
+}
+
+.line {
+  width: 2px;
+  height: 60%;
+  background-color: blue;
+}
+
+.names {
+  font-size: 1.5rem;
+  height: 3rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.names,
+#button {
+  cursor: pointer;
+}
+
+#articleContainer {
+  width: 100%;
+  gap: 1.5rem;
+}
+
+#jobContainer {
+  width: 100%;
+  gap: 0.2rem;
+}
+
+#list {
+  gap: 1rem;
+  list-style: none;
+}
+
+.letters {
+  width: 95%;
+}
+
+li::before {
+  content: "\2022";
+  color: blue;
+  margin-right: 0.7rem;
+}
+
+#button {
+  outline: none;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: rgb(26, 65, 124);
+  color: rgb(255, 255, 255);
+  font-size: 1rem;
+  font-weight: bolder;
+  letter-spacing: 1px;
+  padding: 0.2rem 0.5rem;
+  transition: all 0.5s;
+}
+
+#button:hover {
+  background-color: rgb(64, 100, 153);
+}
+
+@media (max-width: 700px) {
+  #mainContainer {
+    grid-template-rows: auto 70vh 20vh;
+  }
+  #secondContainer {
+    grid-template-rows: 15rem 20rem;
+    grid-template-columns: 90vw;
+  }
+  #namesContainer {
+    display: grid;
+    justify-items: center;
+    height: 10rem;
+  }
+  .undefined {
+    padding-left: 0;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.7fr 0.3fr;
+    grid-template-areas:
+      "names"
+      "line";
+  }
+  .names {
+    grid-area: names;
+    display: grid;
+    align-items: flex-end;
+  }
+  .line {
+    grid-area: line;
+    height: 100%;
+    width: 100%;
+  }
+  #articleContainer {
+    height: 20rem;
+  }
+  #button {
+    position: fixed;
+    bottom: 0;
+  }
+}
