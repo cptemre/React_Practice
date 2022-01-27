@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Item from "./item";
-import $, { data } from "jquery";
+import $ from "jquery";
 
 //set first list on load from local storage
 const getLocalStorage = () => {
@@ -75,6 +75,21 @@ const App = () => {
   //Add item After Render
   useEffect(() => {
     localStorageFunc();
+    //Delete Func
+    $(".delete").mouseup(function () {
+      let x = $(this).parent().parent();
+      for (const key in list) {
+        if (list[key].title === x.children("p:first").html()) {
+          //Delete DOM.Check value and filter it with new list. Set it to localStorage.
+          $(x).remove();
+          let filteredList = list.filter(
+            (data) => data.title !== x.children("p:first").html()
+          );
+          let stringify = JSON.stringify(filteredList);
+          localStorage.setItem("list", stringify);
+        }
+      }
+    });
   }, [isAdded]);
   return (
     <div id="mainContainer">

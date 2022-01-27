@@ -28,11 +28,11 @@ body,
   width: 80vw;
   grid-row-gap: 2rem;
   padding: 32px;
-  transition: all 0.5s;
+  transition: all 0.2s;
 }
 
 #mainContainer:hover {
-  box-shadow: 0 5px 15px 0 rgb(0, 0, 0, 0.3);
+  box-shadow: 0 5px 15px 0 rgba(255, 255, 255, 0.712);
 }
 
 #headerContainer {
