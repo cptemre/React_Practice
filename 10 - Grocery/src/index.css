@@ -13,6 +13,7 @@ body {
   width: 100vw;
   min-height: 100vh;
   background-color: rgb(19, 18, 18);
+  overflow-x: hidden;
 }
 
 body,
@@ -39,13 +40,17 @@ body,
   grid-row-gap: 1rem;
 }
 
-.notice {
+#noticeGreen,
+#noticeRed {
   text-align: center;
   border-radius: 0.5rem;
+}
+#noticeGreen {
   background-color: rgb(157, 206, 151);
+}
+#noticeRed {
   background-color: rgb(206, 162, 151);
 }
-
 #header {
   text-align: center;
   letter-spacing: 2px;
@@ -154,11 +159,11 @@ body,
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-#check {
+.check {
   color: rgb(40, 158, 40);
 }
 
-#delete {
+.delete {
   color: rgb(184, 63, 63);
 }
 
