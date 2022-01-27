@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Item from "./item";
 import $, { data } from "jquery";
 
 //set first list on load from local storage
@@ -74,26 +75,7 @@ const App = () => {
   //Add item After Render
   useEffect(() => {
     localStorageFunc();
-    //burdan devam
-    $(".delete").mouseup(function () {
-      console.log($(this).parent().parent().children(":first").html());
-      let filter = list.filter((data) => {
-        console.log(data.title);
-        return (
-          data.title != $(this).parent().parent().children(":first").html()
-        );
-      });
-      let stringfy = JSON.stringify(filter);
-      $("#itemsContainer").empty();
-      localStorage.setItem("list", stringfy);
-      console.log(localStorage);
-      for (const key in filter) {
-        $("#itemsContainer").append(item);
-        $(".item").eq(key).html(filter[key].title);
-      }
-    });
   }, [isAdded]);
-
   return (
     <div id="mainContainer">
       <div id="headerContainer">
@@ -115,7 +97,11 @@ const App = () => {
           </button>
         </div>
       </div>
-      <div id="itemsContainer"></div>
+      <div id="itemsContainer">
+        {list.map((data) => {
+          return <Item key={data.id} {...data} />;
+        })}
+      </div>
     </div>
   );
 };
