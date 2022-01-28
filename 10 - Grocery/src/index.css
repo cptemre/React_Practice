@@ -153,6 +153,10 @@ body,
   align-items: center;
 }
 
+.line {
+  text-decoration: line-through;
+}
+
 .iconsContainer {
   display: grid;
   justify-items: center;

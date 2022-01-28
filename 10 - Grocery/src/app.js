@@ -58,16 +58,12 @@ const App = () => {
     //Forr useEffect to run after click
     setIsAdded(!isAdded);
   };
-  localStorage.clear();
   //SetValue
   const valueFunc = (e) => {
     //Let you write inside input
     setValue(e);
   };
-  //Icon actions
-  const iconFunc = (e) => {
-    console.log(e);
-  };
+
   //LocalStorage set and add items
   const localStorageFunc = () => {
     let stringfy = JSON.stringify(list);
@@ -77,6 +73,11 @@ const App = () => {
     for (const key in list) {
       $("#itemsContainer").append(item);
       $(".item").eq(key).html(list[key].title);
+      if (list[key].check) {
+        $(".item").eq(key).css("textDecoration", "line-through");
+      } else {
+        $(".item").eq(key).css("textDecoration", "none");
+      }
     }
   };
   //Add item After Render
@@ -126,7 +127,22 @@ const App = () => {
     });
     $(".check").mouseup(function () {
       let x = $(this).parent().parent().children("p:first");
-      $(x).css("textDecoration", "overline");
+      let index = $(x.parent()).index();
+      console.log(index);
+      let filteredList = list;
+      filteredList[index].check = !filteredList[index].check;
+      let isTrue = filteredList[index].check;
+      console.log(filteredList[index].check);
+      console.log(list);
+      console.log("clicked");
+      setList(filteredList);
+
+      if (isTrue) {
+        $(x).css("textDecoration", "line-through");
+      } else {
+        $(x).css("textDecoration", "none");
+      }
+      setIsAdded(!isAdded);
     });
   }, [isAdded]);
   return (
