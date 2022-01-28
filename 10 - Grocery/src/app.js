@@ -52,6 +52,9 @@ const App = () => {
       setList([...list, data]);
       console.log(list);
     }
+    let stringify = JSON.stringify(list);
+    localStorage.setItem("list", stringify);
+
     console.log("clicked");
     //To reset input value
     setValue("");
@@ -84,7 +87,7 @@ const App = () => {
   useEffect(() => {
     localStorageFunc();
     //Delete Button
-    $(".delete").mouseup(function () {
+    $(".delete").mouseup(async function () {
       $("#editBtn").remove();
       $("#submitBtn").show();
       setValue("");
@@ -93,13 +96,16 @@ const App = () => {
         if (list[key].title === x.children("p:first").html()) {
           //Delete DOM.Check value and filter it with new list. Set it to localStorage.
           $(x).remove();
-          let filteredList = list.filter(
+          let filteredList = await list.filter(
             (data) => data.title !== x.children("p:first").html()
           );
           let stringify = JSON.stringify(filteredList);
           localStorage.setItem("list", stringify);
+          window.location.reload();
         }
       }
+
+      console.log(localStorage.getItem("list"));
     });
     //Edit Button
     $(".edit").mouseup(function () {
