@@ -115,7 +115,7 @@ body,
 }
 
 #input,
-#btn {
+.btn {
   outline: none;
   border: none;
 }
@@ -130,13 +130,13 @@ body,
   outline: 2px solid rgb(228, 115, 152);
 }
 
-#btn {
+.btn {
   background: rgb(143, 228, 150);
   border-radius: 0.5rem;
   transition: all 0.5s;
 }
 
-#btn:hover {
+.btn:hover {
   background: rgb(39, 146, 48);
 }
 

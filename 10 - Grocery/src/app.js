@@ -21,6 +21,12 @@ const App = () => {
             <i class="fas fa-trash-alt delete"></i>
           </div>
         </div>`;
+  const submitBtn = `<button type="submit" id="submitBtn" class="btn" onClick='{(e) => clickFunc(e)}'>
+            Submit
+          </button>`;
+  const editBtn = `<button type="submit" id="editBtn" class="btn">
+            Edit
+          </button>`;
   //useState
   const [isAdded, setIsAdded] = useState(false);
   const [value, setValue] = useState("");
@@ -42,7 +48,7 @@ const App = () => {
         $("#noticeGreen").remove();
       }, 2000);
       let date = new Date().getTime().toString();
-      let data = { id: date, title: value };
+      let data = { id: date, title: value, check: false };
       setList([...list, data]);
       console.log(list);
     }
@@ -52,6 +58,7 @@ const App = () => {
     //Forr useEffect to run after click
     setIsAdded(!isAdded);
   };
+  localStorage.clear();
   //SetValue
   const valueFunc = (e) => {
     //Let you write inside input
@@ -75,8 +82,11 @@ const App = () => {
   //Add item After Render
   useEffect(() => {
     localStorageFunc();
-    //Delete Func
+    //Delete Button
     $(".delete").mouseup(function () {
+      $("#editBtn").remove();
+      $("#submitBtn").show();
+      setValue("");
       let x = $(this).parent().parent();
       for (const key in list) {
         if (list[key].title === x.children("p:first").html()) {
@@ -89,6 +99,34 @@ const App = () => {
           localStorage.setItem("list", stringify);
         }
       }
+    });
+    //Edit Button
+    $(".edit").mouseup(function () {
+      //Find dom html. Set its value to input. Change button. On click edit prepare a new list.
+      let x = $(this).parent().parent().children("p:first");
+      $(".item").css("color", "white");
+      $(x).css("color", "red");
+      setValue(x.html());
+      $("#editBtn").remove();
+      $("#submitBtn").hide();
+      $(editBtn).insertAfter("#input");
+      $("#editBtn").mouseup(function () {
+        $("#editBtn").remove();
+        $("#submitBtn").show();
+        x.html($("#input").val());
+
+        let index = $(x.parent()).index();
+        let filteredList = list;
+        filteredList[index].title = $("#input").val();
+        setList(filteredList);
+        setIsAdded(!isAdded);
+        $(x).css("color", "white");
+        setValue("");
+      });
+    });
+    $(".check").mouseup(function () {
+      let x = $(this).parent().parent().children("p:first");
+      $(x).css("textDecoration", "overline");
     });
   }, [isAdded]);
   return (
@@ -107,7 +145,12 @@ const App = () => {
             value={value}
             onChange={(e) => valueFunc(e.target.value)}
           />
-          <button type="submit" id="btn" onClick={(e) => clickFunc(e)}>
+          <button
+            type="submit"
+            id="submitBtn"
+            className="btn"
+            onClick={(e) => clickFunc(e)}
+          >
             Submit
           </button>
         </div>
