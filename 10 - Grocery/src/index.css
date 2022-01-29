@@ -24,11 +24,13 @@ body,
 }
 
 #mainContainer {
-  margin-bottom: 50vh;
-  width: 80vw;
+  margin-bottom: 30vh;
+  width: 90vw;
   grid-row-gap: 2rem;
-  padding: 32px;
+  padding: 3rem;
   transition: all 0.2s;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
 }
 
 #mainContainer:hover {
@@ -49,7 +51,7 @@ body,
   background-color: rgb(157, 206, 151);
 }
 #noticeRed {
-  background-color: rgb(206, 162, 151);
+  background-color: rgba(201, 71, 71, 0.712);
 }
 #header {
   text-align: center;
@@ -114,6 +116,11 @@ body,
   width: 100%;
 }
 
+#itemsContainer {
+  display: grid;
+  grid-row-gap: 1.5rem;
+}
+
 #input,
 .btn {
   outline: none;
@@ -127,7 +134,7 @@ body,
 }
 
 #input:focus {
-  outline: 2px solid rgb(228, 115, 152);
+  outline: 4px solid rgb(129, 25, 60);
 }
 
 .btn {
@@ -145,21 +152,27 @@ body,
   grid-template-columns: 0.8fr 0.2fr;
   color: white;
   border-bottom: 2px dotted white;
+  border-radius: 1rem;
   padding: 0.5rem 0;
+  transition: all 0.2s;
+  padding: 0 0.5rem;
+  height: 3rem;
 }
 
+.itemsContainer:hover {
+  box-shadow: 0 5px 15px 0 rgba(201, 71, 71, 0.712);
+  transform: scale(1.05);
+}
 .item {
   display: grid;
   align-items: center;
-}
-
-.line {
-  text-decoration: line-through;
+  font-size: 1.2rem;
 }
 
 .iconsContainer {
   display: grid;
   justify-items: center;
+  align-items: center;
   grid-template-columns: 1fr 1fr 1fr;
 }
 

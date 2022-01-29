@@ -21,9 +21,6 @@ const App = () => {
             <i class="fas fa-trash-alt delete"></i>
           </div>
         </div>`;
-  const submitBtn = `<button type="submit" id="submitBtn" class="btn" onClick='{(e) => clickFunc(e)}'>
-            Submit
-          </button>`;
   const editBtn = `<button type="submit" id="editBtn" class="btn">
             Edit
           </button>`;
@@ -34,19 +31,16 @@ const App = () => {
   //Functions
   //Get From Local Storage in the load
 
-  //localStorage.clear();
-  //Submit
-  const clickFunc = (e) => {
-    e.preventDefault();
+  const submitFunction = () => {
     if (value.trim("") !== "") {
       //Variables
-      let p = '<p id="noticeGreen">Item is added to the list</p>';
+      let p = `<p id="noticeGreen">- ${value} - added to the list</p>`;
       //Information of add/remove
       $(p).insertBefore("#header");
       //Remove info
       setTimeout(() => {
         $("#noticeGreen").remove();
-      }, 2000);
+      }, 200);
       let date = new Date().getTime().toString();
       let data = { id: date, title: value, check: false };
       setList([...list, data]);
@@ -59,8 +53,23 @@ const App = () => {
     //To reset input value
     setValue("");
     //Forr useEffect to run after click
+  };
+
+  //Submit Click
+  const clickFunc = (e) => {
+    e.preventDefault();
+    submitFunction();
     setIsAdded(!isAdded);
   };
+  //Enter Function
+  const keydown = (e) => {
+    if (e.which === 13) {
+      submitFunction();
+      window.location.reload();
+    }
+  };
+
+  document.addEventListener("keydown", keydown);
   //SetValue
   const valueFunc = (e) => {
     //Let you write inside input
@@ -77,9 +86,11 @@ const App = () => {
       $("#itemsContainer").append(item);
       $(".item").eq(key).html(list[key].title);
       if (list[key].check) {
-        $(".item").eq(key).css("textDecoration", "line-through");
+        $(".item")
+          .eq(key)
+          .css({ color: "#66e766", textDecoration: "line-through" });
       } else {
-        $(".item").eq(key).css("textDecoration", "none");
+        $(".item").eq(key).css({ color: "white", textDecoration: "none" });
       }
     }
   };
@@ -87,21 +98,33 @@ const App = () => {
   useEffect(() => {
     localStorageFunc();
     //Delete Button
-    $(".delete").mouseup(async function () {
+    $(".delete").mouseup(function () {
       $("#editBtn").remove();
       $("#submitBtn").show();
       setValue("");
       let x = $(this).parent().parent();
+      //Variables
+      let p = `<p id="noticeRed">- ${x
+        .children("p:first")
+        .html()} - deleted from the list</p>`;
+      //Information of add/remove
+      $(p).insertBefore("#header");
+      //Remove info
+      setTimeout(() => {
+        $("#noticeGreen").remove();
+      }, 200);
       for (const key in list) {
         if (list[key].title === x.children("p:first").html()) {
           //Delete DOM.Check value and filter it with new list. Set it to localStorage.
           $(x).remove();
-          let filteredList = await list.filter(
+          let filteredList = list.filter(
             (data) => data.title !== x.children("p:first").html()
           );
           let stringify = JSON.stringify(filteredList);
           localStorage.setItem("list", stringify);
-          window.location.reload();
+          setTimeout(() => {
+            window.location.reload();
+          }, 200);
         }
       }
 
@@ -144,9 +167,11 @@ const App = () => {
       setList(filteredList);
 
       if (isTrue) {
-        $(x).css("textDecoration", "line-through");
+        $(x).css({ fontSize: "0.5rem", textDecoration: "none" });
+        console.log("green");
       } else {
         $(x).css("textDecoration", "none");
+        $(x).css("color", "white");
       }
       setIsAdded(!isAdded);
     });
@@ -166,6 +191,7 @@ const App = () => {
             name="input"
             value={value}
             onChange={(e) => valueFunc(e.target.value)}
+            onKeyDown={(e) => keydown(e)}
           />
           <button
             type="submit"
