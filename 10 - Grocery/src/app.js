@@ -153,6 +153,19 @@ const App = () => {
         $(x).css("color", "white");
         setValue("");
       });
+      $("#input").keydown(function (e) {
+        $("#editBtn").remove();
+        $("#submitBtn").show();
+        x.html($("#input").val());
+
+        let index = $(x.parent()).index();
+        let filteredList = list;
+        filteredList[index].title = $("#input").val();
+        setList(filteredList);
+        setIsAdded(!isAdded);
+        $(x).css("color", "white");
+        setValue("");
+      });
     });
     $(".check").mouseup(function () {
       let x = $(this).parent().parent().children("p:first");
