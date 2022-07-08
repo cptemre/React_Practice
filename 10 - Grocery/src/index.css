@@ -1,0 +1,195 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color1: white;
+  --color2: rgb(24, 161, 70);
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: rgb(19, 18, 18);
+  overflow-x: hidden;
+}
+
+body,
+#mainContainer {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+#mainContainer {
+  margin-bottom: 30vh;
+  width: 90vw;
+  grid-row-gap: 2rem;
+  padding: 3rem;
+  transition: all 0.2s;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+}
+
+#mainContainer:hover {
+  box-shadow: 0 5px 15px 0 rgba(255, 255, 255, 0.712);
+}
+
+#headerContainer {
+  display: grid;
+  grid-row-gap: 1rem;
+}
+
+#noticeGreen,
+#noticeRed {
+  text-align: center;
+  border-radius: 0.5rem;
+}
+#noticeGreen {
+  background-color: rgb(157, 206, 151);
+}
+#noticeRed {
+  background-color: rgba(201, 71, 71, 0.712);
+}
+#header {
+  text-align: center;
+  letter-spacing: 2px;
+  color: var(--color1);
+  text-shadow: 0 0 7px var(--color1), 0 0 10px var(--color1),
+    0 0 20px var(--color1), 0 0 40px var(--color2), 0 0 80px var(--color2),
+    0 0 100px var(--color2), 0 0 150px var(--color2);
+  animation: pulse 2s infinite alternate;
+}
+
+#flick1 {
+  animation: flicker1 1s infinite alternate;
+}
+
+#flick2 {
+  animation: flicker1 3s infinite alternate;
+}
+
+@keyframes flicker1 {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    text-shadow: 0 0 5px var(--color1), 0 0 8px var(--color1),
+      0 0 18px var(--color1), 0 0 38px var(--color2), 0 0 78px var(--color2),
+      0 0 98px var(--color2), 0 0 148px var(--color2);
+  }
+  20%,
+  24%,
+  55% {
+    text-shadow: none;
+  }
+}
+
+@keyframes pulse {
+  100% {
+    text-shadow: 0 0 5px var(--color1), 0 0 8px var(--color1),
+      0 0 18px var(--color1), 0 0 38px var(--color2), 0 0 78px var(--color2),
+      0 0 98px var(--color2), 0 0 148px var(--color2);
+  }
+  0% {
+    text-shadow: 0 0 1px var(--color1), 0 0 3px var(--color1),
+      0 0 8px var(--color1), 0 0 18px var(--color2), 0 0 38px var(--color2),
+      0 0 48px var(--color2), 0 0 98px var(--color2);
+  }
+}
+
+#inputContainer {
+  display: grid;
+  grid-template-columns: 0.8fr 0.2fr;
+  grid-column-gap: 2px;
+  height: 1.5rem;
+}
+
+#itemsContainer,
+#inputContainer,
+#headerContainer {
+  width: 100%;
+}
+
+#itemsContainer {
+  display: grid;
+  grid-row-gap: 1.5rem;
+}
+
+#input,
+.btn {
+  outline: none;
+  border: none;
+}
+
+#input {
+  border-radius: 0.5rem;
+  padding: 0.2rem 0;
+  padding-left: 1rem;
+}
+
+#input:focus {
+  outline: 4px solid rgb(129, 25, 60);
+}
+
+.btn {
+  background: rgb(143, 228, 150);
+  border-radius: 0.5rem;
+  transition: all 0.5s;
+}
+
+.btn:hover {
+  background: rgb(39, 146, 48);
+}
+
+.itemsContainer {
+  display: grid;
+  grid-template-columns: 0.8fr 0.2fr;
+  color: white;
+  border-bottom: 2px dotted white;
+  border-radius: 1rem;
+  padding: 0.5rem 0;
+  transition: all 0.2s;
+  padding: 0 0.5rem;
+  height: 3rem;
+}
+
+.itemsContainer:hover {
+  box-shadow: 0 5px 15px 0 rgba(201, 71, 71, 0.712);
+  transform: scale(1.05);
+}
+.item {
+  display: grid;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.iconsContainer {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.check {
+  color: rgb(40, 158, 40);
+}
+
+.delete {
+  color: rgb(184, 63, 63);
+}
+
+i,
+button {
+  cursor: pointer;
+}
+
+i {
+  border: 2px solid white;
+  padding: 0.3rem;
+}

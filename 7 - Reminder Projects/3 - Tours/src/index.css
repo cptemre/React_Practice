@@ -1,0 +1,99 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: rgb(226, 222, 222);
+}
+
+.tour {
+  margin: 0 auto;
+  width: 50%;
+  margin-top: 3rem;
+  display: grid;
+  justify-items: center;
+  grid-gap: 2rem;
+}
+
+#mainHeader {
+  width: 100%;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+#underline {
+  background-color: black;
+  margin: 0 auto;
+  margin-top: 0.5rem;
+  width: 25%;
+  height: 0.3rem;
+}
+
+/*#region imgDiv*/
+.imgDiv {
+  width: 110%;
+}
+/*#endregion imgDiv*/
+
+/*#region Title*/
+.titleDiv {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+}
+.title {
+  display: grid;
+  justify-items: flex-start;
+}
+.price {
+  display: grid;
+  justify-items: flex-end;
+}
+/*#endregion Title*/
+
+img {
+  width: 100%;
+}
+
+p {
+  text-align: justify;
+}
+
+.priceSpan {
+  display: grid;
+  justify-items: flex-end;
+  align-items: flex-start;
+}
+
+.price {
+  background-color: rgba(219, 83, 83, 0.5);
+  color: rgb(110, 39, 39);
+  padding: 0.1rem;
+}
+
+.show {
+  color: rgb(19, 19, 211);
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+button {
+  outline: none;
+  border: 2px solid rgb(124, 68, 124);
+  background-color: transparent;
+  border-radius: 2rem;
+  padding: 0 2rem;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgb(124, 68, 124);
+  color: white;
+}

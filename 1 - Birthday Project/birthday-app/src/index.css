@@ -1,0 +1,61 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: rgb(189, 135, 135);
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+#section {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-gap: 2rem;
+  border: 2px solid black;
+  padding: 2rem;
+  background-color: rgb(173, 150, 150);
+}
+
+.people {
+  display: grid;
+  grid-template-columns: 0.5fr 2fr;
+  grid-gap: 1rem;
+  padding: 2rem;
+}
+
+.people img {
+  border-radius: 2rem;
+}
+
+h2 {
+  text-align: center;
+}
+
+.info {
+  display: grid;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.dismiss {
+  width: 5rem;
+}
+
+#clear {
+  width: 8rem;
+}
+
+button {
+  background-color: rgb(218, 94, 63);
+  outline: none;
+}
+
+button:hover {
+  background-color: rgb(192, 57, 23);
+}

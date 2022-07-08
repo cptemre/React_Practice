@@ -1,0 +1,79 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color1: #fff;
+  --color2: rgb(140, 29, 155);
+}
+
+body,
+#generateDiv {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+body {
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: rgb(5, 5, 5);
+  overflow-x: hidden;
+  color: white;
+}
+
+#mainContainer {
+  min-width: 80vw;
+  min-height: 80vh;
+}
+
+#header {
+  text-align: center;
+  color: var(--color1);
+
+  animation: header 2.5s infinite alternate;
+}
+
+@keyframes header {
+  100% {
+    text-shadow: 0 0 7px var(--color1), 0 0 10px var(--color1),
+      0 0 20px var(--color1), 0 0 40px var(--color2), 0 0 85px var(--color2),
+      0 0 100px var(--color2), 0 0 150px var(--color2);
+  }
+  0% {
+    text-shadow: 0 0 4px var(--color1), 0 0 8px var(--color1),
+      0 0 12px var(--color1), 0 0 22px var(--color2), 0 0 44px var(--color2),
+      0 0 79px var(--color2), 0 0 110px var(--color2);
+  }
+}
+
+#generateDiv {
+  grid-template-columns: 0.5fr 2rem 0.5fr;
+  grid-column-gap: 0.5rem;
+  height: 3rem;
+}
+
+#label {
+  width: 100%;
+  text-align: end;
+}
+
+#input {
+  width: 2rem;
+}
+
+#btnDiv {
+  display: grid;
+  justify-items: flex-start;
+  width: 100%;
+}
+
+#lorem {
+  width: 80vw;
+  display: grid;
+  text-align: center;
+  grid-row-gap: 2rem;
+  margin-top: 2rem;
+}

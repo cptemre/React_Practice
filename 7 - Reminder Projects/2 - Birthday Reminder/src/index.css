@@ -1,0 +1,146 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+body {
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: rgb(105, 33, 33);
+  color: wheat;
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 0.5fr;
+  grid-template-areas: " . mainContainer .";
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-area: mainContainer;
+  justify-content: center;
+  align-items: center;
+}
+
+#mainContainer {
+  width: 50vw;
+  height: 83%;
+  background-color: rgb(131, 52, 20);
+  border: 2px solid rgb(204, 63, 63);
+  border-radius: 2rem;
+  border-bottom-right-radius: 5rem;
+}
+
+#header {
+  text-align: center;
+  padding-top: 1rem;
+}
+
+#container {
+  margin-top: 1rem;
+}
+
+.person {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 0.5fr 0.2fr;
+  height: 5rem;
+  align-items: center;
+  justify-items: center;
+  padding-left: 0.5rem;
+  border-bottom: 6px dotted rgb(66, 9, 9);
+}
+
+.fullName {
+  border-right: 2px solid black;
+}
+
+.name {
+  width: 5rem;
+  height: 100%;
+}
+
+.surname {
+  width: 5rem;
+  height: 100%;
+  font-size: 25px;
+  font-family: "Bebas Neue", cursive;
+  color: black;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+  width: 6rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  border: 2px solid black;
+  object-fit: cover;
+}
+
+#btnDiv {
+  margin-top: 1rem;
+  display: grid;
+  justify-items: flex-end;
+  align-items: center;
+}
+
+#btn,
+.removeBtn {
+  width: 5rem;
+  height: 1.4rem;
+  background-color: rgb(209, 49, 49);
+  color: rgb(235, 230, 223);
+  outline: none;
+  border: 2px solid rgb(253, 152, 69);
+  border-radius: 2rem;
+  letter-spacing: 0.1rem;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+#btn:hover {
+  background-color: rgb(180, 41, 41);
+  color: rgb(128, 129, 120);
+  border: 2px solid rgb(122, 72, 32);
+}
+
+.removeBtn {
+  width: 1.2rem;
+  height: 1.7rem;
+}
+
+@media (max-width: 650px) {
+  body {
+    background-color: rgb(105, 33, 33);
+    color: wheat;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: "mainContainer";
+  }
+  #mainContainer {
+    width: 100vw;
+  }
+  img {
+    width: 2.5rem;
+    height: 3rem;
+  }
+
+  .name,
+  .age,
+  button {
+    font-size: 0.7rem;
+  }
+  .surname {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .fullName {
+    width: 2rem;
+    border: none;
+    overflow: visible;
+  }
+}
